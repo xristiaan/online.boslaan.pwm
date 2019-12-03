@@ -1,5 +1,8 @@
 {
   "0.0.2": {
     "en": "First version"
+  },
+  "0.0.3": {
+    "en": "removed change log from readme, provided sharper images."
   }
 }
