@@ -4,5 +4,11 @@
   },
   "0.0.3": {
     "en": "removed change log from readme, provided sharper images."
+  },
+  "0.0.4": {
+    "en": "New images realy added"
+  },
+  "0.0.5": {
+    "en": "Fixed Polling."
   }
 }
