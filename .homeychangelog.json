@@ -10,5 +10,8 @@
   },
   "0.0.5": {
     "en": "Fixed Polling."
+  },
+  "0.0.6": {
+    "en": "Fixed battery polling, Added battery alarm trigger"
   }
 }

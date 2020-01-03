@@ -1,6 +1,6 @@
 {
     "id": "com.soma.connect",
-    "version": "0.0.5",
+    "version": "0.0.6",
     "compatibility": ">=3.0.0",
     "sdk": 2,
     "name":
@@ -27,6 +27,7 @@
         "url": "https://github.com/AdyRock/com.soma.connect/issues"
     },
     "source": "https://github.com/AdyRock/com.soma.connect",
+    "homeyCommunityTopicId": 22000,
     "images":
     {
         "large": "/assets/images/large.png",

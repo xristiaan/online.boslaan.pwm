@@ -35,5 +35,9 @@ Currently only supports one hub
 
 # Version Log
 
-## 0.1.0
+## 0.0.6
+* Added battery alarm trigger
+* Fixed battery polling
+
+## 0.0.5
 * First beta

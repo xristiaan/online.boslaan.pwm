@@ -120,15 +120,23 @@ class somaShade extends Homey.Device
             const devData = this.getData();
 
             const battery = await Homey.app.getBridge().getBattery( devData[ 'id' ] );
-            if ( battery >= 0 )
+            if ( battery > 320 )
             {
-                await this.setCapabilityValue( 'measure_battery', ( ( battery - 320 ) / ( 420 - 320 ) ) * 100 );
+                await this.setCapabilityValue( 'measure_battery', (battery - 320) );
             }
+            else
+            {
+                await this.setCapabilityValue( 'measure_battery', 0 );
+            }
+
+            await this.setCapabilityValue( 'alarm_battery', (battery < 370) );
         }
         catch ( err )
         {
             Homey.app.updateLog( this.getName() + " getBatteryValues Error " + err );
         }
+
+//        setTimeout( this.getBatteryValues.bind( this ), 600000 );
     }
 }
 
