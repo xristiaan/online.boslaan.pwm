@@ -103,7 +103,7 @@ class somaShade extends Homey.Device
             if ( position >= 0 )
             {
                 this.setAvailable();
-                await this.setCapabilityValue( 'windowcoverings_closed', ( position == (settings.closedPosition / 100) ) );
+                await this.setCapabilityValue( 'windowcoverings_closed', ( position == ( settings.closedPosition / 100 ) ) );
                 await this.setCapabilityValue( 'windowcoverings_set', position );
             }
         }
@@ -122,21 +122,29 @@ class somaShade extends Homey.Device
             const battery = await Homey.app.getBridge().getBattery( devData[ 'id' ] );
             if ( battery > 320 )
             {
-                await this.setCapabilityValue( 'measure_battery', (battery - 320) );
+                await this.setCapabilityValue( 'measure_battery', ( battery - 320 ) );
             }
             else
             {
                 await this.setCapabilityValue( 'measure_battery', 0 );
             }
 
-            await this.setCapabilityValue( 'alarm_battery', (battery < 370) );
+            if ( battery > 310 )
+            {
+                await this.setCapabilityValue( 'alarm_battery', ( battery < 370 ) );
+                Homey.app.updateLog( 'Low Battery: ' + battery );
+            }
+            else
+            {
+                Homey.app.updateLog( 'Odd Battery: ' + battery );
+            }
         }
         catch ( err )
         {
             Homey.app.updateLog( this.getName() + " getBatteryValues Error " + err );
         }
 
-//        setTimeout( this.getBatteryValues.bind( this ), 600000 );
+        //        setTimeout( this.getBatteryValues.bind( this ), 600000 );
     }
 }
 
