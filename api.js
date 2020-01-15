@@ -1,8 +1,7 @@
 const Homey = require( 'homey' );
-const SomaBridge = require( '../../lib/SomaBridge' );
+const ArgonConnectBridge = require( '../../lib/ArgonConnectBridge' );
 
 module.exports = [
-
     {
         method: 'GET',
         path: '/',
@@ -13,7 +12,6 @@ module.exports = [
 
             // callback follows ( err, result )
             callback( null, result );
-
             // access /?foo=bar as args.query.foo
         }
     },

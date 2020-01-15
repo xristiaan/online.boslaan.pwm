@@ -2,10 +2,10 @@
 
 const Homey = require('homey');
 
-class pmwController extends Homey.Driver {
+class PwmFan extends Homey.Driver {
 	
 	async onInit() {
-		this.log('somaShade has been inited');
+		this.log('PwmFan has been initialized');
 	}
 
     // this is the easiest method to overwrite, when only the template 'Drivers-Pairing-System-Views' is being used.
@@ -37,4 +37,4 @@ class pmwController extends Homey.Driver {
 	
 }
 
-module.exports = pmwController;
+module.exports = PwmFan;

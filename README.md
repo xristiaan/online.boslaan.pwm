@@ -1,43 +1,42 @@
-# com.soma.connect
+# online.boslaan.pwmfan
 
-This app is for Soma devices via the Soma Connect hub.
+This app is for a PWM controlled home ventilation fan
 
 # How does it work
-It connects via the Soma API for the Connect hub.
-
-> Note: If you have a previous version for this app installed, then you need to remove the already added devices and add them again to enable additional or changed functionality.
-You will also have to repair all related flows because of that. This only applies to new features for existing devices so should not be a problems yet.
+The controller connects via a REST API to the PWM controller (on a Particle Argon Baord)
 
 # Currently supported:
-* Soma Shades and Tilt 
+* PWM Fan Control
+
+# Future functionality
+* Temperature measurement
+* Humidity measurement
+* Backup autonomous operation based on humidity in ventilation air, with target humidity settings
 
 ## Capabilities
-* Open / Close / Stop
-* Position
-* Battery
+* Off
+* Air Flow Rate 
 
 # Flows:
-## Triggers:
-* Position Changed
+## Triggers
+* Humidity change
+* Temperature change
 
 ## Conditions:
-* Position
+* Air Flow Rate
+* Humidity
 
 ## Then:
 * Set Position to
 
 # Configuration
-* Be sure that your Soma blinds are paired and working with the connect hub.
-* Specify the IP address of your connect hub in the App settings page
+* Assign a fixed IP address to the controller. You can typically do this in the DHCP settings of your internet Router where you can assign a fixed IP address for the MAC address of the PWM controller board.
+* Specify the IP address of your controller hub in the App settings page
 
 # Notes
-Currently only supports one hub
+Currently only supports one controller
 
 # Version Log
 
-## 0.0.6
-* Added battery alarm trigger
-* Fixed battery polling
-
-## 0.0.5
-* First beta
+## 0.0.1
+* first beta

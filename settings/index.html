@@ -21,13 +21,23 @@
         <p data-i18n="settings.subtitle"></p>
 
         <fieldset>
-            <legend>Find the IP address assigned by your router.</legend>
+            <legend>Enter the IP address assigned by your router to the Argon Fan Controller.</legend>
 
             <div class="field row">
-                <label for="hubIP">Hub IP</label>
-                <input id="hubIP" type="text" value="" />
+                <label for="deviceIP">Device IP</label>
+                <input id="deviceIP" type="text" value="192.168.2.71" />
             </div>
         </fieldset>
+
+        <fieldset>
+            <legend>Maximum airflow of your van (in m3.h-1).</legend>
+
+            <div class="field row">
+                <label for="maxAirFlow">Max Air Flow</label>
+                <input id="maxAirFlow" type="number" value="500" />
+            </div>
+        </fieldset>
+
         <p>Polling</p>
         <fieldset>
             <legend>Polling is always used after a settings is changed</legend>
@@ -64,7 +74,8 @@
     </div>
 
     <script type="text/javascript">
-        var hubIPElement = document.getElementById( 'hubIP' );
+        var deviceIPElement = document.getElementById( 'deviceIP' );
+        var maxAirFlowElement = document.getElementById( 'maxAirFlow' );
         var diagLogElement = document.getElementById( 'diagLog' );
         var logEnabledElement = document.getElementById( 'logEnabled' );
         var usePollingElement = document.getElementById( 'usePolling' );
@@ -91,10 +102,16 @@
 
             } );
 
-            Homey.get( 'hubIP', function( err, hubIP )
+            Homey.get( 'deviceIP', function( err, deviceIP )
             {
                 if ( err ) return Homey.alert( err );
-                hubIPElement.value = hubIP;
+                deviceIPElement.value = deviceIP;
+            } );
+
+            Homey.get( 'maxAirFlow', function( err, maxAirFlow )
+            {
+                if ( err ) return Homey.alert( err );
+                maxAirFlowElement.value = maxAirFlow;
             } );
 
             Homey.get( 'usePolling', function( err, usePolling )
@@ -111,8 +128,13 @@
 
             saveElement.addEventListener( 'click', function( e )
             {
-                hubIPElement.value = hubIPElement.value.replace( /[\"\']/g, '' );
-                Homey.set( 'hubIP', hubIPElement.value, function( err )
+                deviceIPElement.value = deviceIPElement.value.replace( /[\"\']/g, '' );
+                Homey.set( 'deviceIP', deviceIPElement.value, function( err )
+                {
+                    if ( err ) return Homey.alert( err );
+                } );
+
+                Homey.set( 'maxAirFlow', maxAirFlowElement.value, function( err )
                 {
                     if ( err ) return Homey.alert( err );
                 } );
